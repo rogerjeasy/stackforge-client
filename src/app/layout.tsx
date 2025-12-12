@@ -3,6 +3,7 @@ import { Sora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
+import BackgroundAnimation from "@/components/common/BackgroundAnimation";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -32,8 +33,18 @@ export default function RootLayout({
         className="font-sans antialiased"
         suppressHydrationWarning
       >
+        {/* Background Animation - Behind everything */}
+        <BackgroundAnimation />
+        
+        {/* Header - Fixed at top */}
         <Header />
-        {children}
+        
+        {/* Main Content - Between Header and Footer */}
+        <main className="relative min-h-screen pt-20">
+          {children}
+        </main>
+        
+        {/* Footer - At bottom */}
         <Footer />
       </body>
     </html>
