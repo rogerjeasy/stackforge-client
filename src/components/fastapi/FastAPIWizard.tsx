@@ -126,11 +126,10 @@ export default function FastAPIWizard() {
 
   return (
     <div className="w-full max-w-5xl mx-auto">
-      {/* Progress Steps */}
-      <StepProgress currentStep={currentStep} completedSteps={completedSteps} />
-
       {/* Form Container */}
       <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border-2 border-gray-200 p-6 sm:p-8 lg:p-12">
+        {/* Progress Steps - Now Inside Box */}
+        <StepProgress currentStep={currentStep} completedSteps={completedSteps} />
         {/* Step Content */}
         <div className="min-h-[500px]">
           {currentStep === 1 && (

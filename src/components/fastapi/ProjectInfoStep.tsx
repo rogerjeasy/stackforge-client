@@ -21,12 +21,12 @@ interface ProjectInfoStepProps {
 export default function ProjectInfoStep({ data, onChange, errors }: ProjectInfoStepProps) {
   return (
     <div className="space-y-6 sm:space-y-8 animate-fadeInUp">
-      {/* Header */}
-      <div>
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+      {/* Header - Centered */}
+      <div className="text-center mx-auto max-w-3xl">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 text-center">
           Project Information
         </h2>
-        <p className="text-sm sm:text-base text-gray-600">
+        <p className="text-sm sm:text-base text-gray-600 text-center">
           Let's start with the basics of your FastAPI project
         </p>
       </div>

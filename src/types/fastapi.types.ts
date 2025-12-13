@@ -21,7 +21,7 @@ export interface APIConfig {
 
 export interface DatabaseConfig {
   enabled: boolean;
-  type: "postgresql" | "mysql" | "sqlite" | "mongodb";
+  type: "postgresql" | "mysql" | "sqlite" | "mongodb" | "firestore";
   useAsync: boolean;
   migrations: boolean;
 }

@@ -30,12 +30,12 @@ export default function APIConfigStep({ data, onChange, errors }: APIConfigStepP
 
   return (
     <div className="space-y-6 sm:space-y-8 animate-fadeInUp">
-      {/* Header */}
-      <div>
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+      {/* Header - Centered */}
+      <div className="text-center mx-auto max-w-3xl">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 text-center">
           API Configuration
         </h2>
-        <p className="text-sm sm:text-base text-gray-600">
+        <p className="text-sm sm:text-base text-gray-600 text-center">
           Configure your API server and endpoints
         </p>
       </div>

@@ -40,10 +40,26 @@ export default function FeaturesStep({ data, onChange }: FeaturesStepProps) {
     // Database
     {
       id: "database",
-      title: "Database Integration",
-      description: "SQLAlchemy ORM with async support and migrations",
+      title: "PostgreSQL Database",
+      description: "SQLAlchemy ORM with async PostgreSQL and Alembic migrations",
       icon: <Database className="w-6 h-6" />,
-      enabled: data.database.enabled,
+      enabled: data.database.enabled && data.database.type === "postgresql",
+      category: "database",
+    },
+    {
+      id: "mongodb",
+      title: "MongoDB",
+      description: "MongoDB with Motor async driver and ODM support",
+      icon: <Database className="w-6 h-6" />,
+      enabled: data.database.enabled && data.database.type === "mongodb",
+      category: "database",
+    },
+    {
+      id: "firestore",
+      title: "Firebase Firestore",
+      description: "Google Cloud Firestore NoSQL database integration",
+      icon: <Database className="w-6 h-6" />,
+      enabled: data.database.enabled && data.database.type === "firestore",
       category: "database",
     },
     
@@ -99,22 +115,35 @@ export default function FeaturesStep({ data, onChange }: FeaturesStepProps) {
     const feature = features.find((f) => f.id === id);
     if (!feature) return;
 
-    // Handle special cases for nested features
-    if (id === "database") {
+    // Handle database selection (exclusive - only one can be selected)
+    if (id === "database" || id === "mongodb" || id === "firestore") {
+      let dbType: "postgresql" | "mongodb" | "firestore" | "sqlite" | "mysql" = "postgresql";
+      
+      if (id === "mongodb") dbType = "mongodb";
+      else if (id === "firestore") dbType = "firestore";
+      
+      // Toggle database enabled state
+      const isCurrentlySelected = data.database.enabled && data.database.type === dbType;
+      
       onChange({
         database: {
           ...data.database,
-          enabled: !data.database.enabled,
+          enabled: !isCurrentlySelected,
+          type: isCurrentlySelected ? "postgresql" : dbType,
         },
       });
-    } else if (id === "authentication") {
+    } 
+    // Handle authentication
+    else if (id === "authentication") {
       onChange({
         authentication: {
           ...data.authentication,
           enabled: !data.authentication.enabled,
         },
       });
-    } else {
+    } 
+    // Handle other features
+    else {
       onChange({ [id]: !data[id as keyof Features] });
     }
 
@@ -134,12 +163,12 @@ export default function FeaturesStep({ data, onChange }: FeaturesStepProps) {
 
   return (
     <div className="space-y-6 sm:space-y-8 animate-fadeInUp">
-      {/* Header */}
-      <div>
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+      {/* Header - Centered */}
+      <div className="text-center mx-auto max-w-3xl">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 text-center">
           Select Features
         </h2>
-        <p className="text-sm sm:text-base text-gray-600">
+        <p className="text-sm sm:text-base text-gray-600 text-center">
           Choose the features you want to include in your project
         </p>
       </div>
@@ -149,7 +178,7 @@ export default function FeaturesStep({ data, onChange }: FeaturesStepProps) {
         {/* Essential */}
         <div>
           <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <div className="w-1 h-6 bg-gradient-to-b from-[#FF6B35] to-[#F7931E] rounded-full" />
+            <div className="w-1 h-6 bg-gradient-to-b from-[#0F172A] to-[#1E293B] rounded-full" />
             Essential Features
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
