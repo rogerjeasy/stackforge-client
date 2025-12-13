@@ -141,7 +141,7 @@ export const generators: Generator[] = [
       rating: "4.9/5",
     },
     buttonText: "Create FastAPI Project",
-    href: "/generators/fastapi",
+    href: "/fastapi-generator",
   },
   {
     id: "react",
@@ -162,7 +162,7 @@ export const generators: Generator[] = [
       rating: "4.8/5",
     },
     buttonText: "Create React Project",
-    href: "/generators/react",
+    href: "/generators/react-generator",
   },
   {
     id: "nextjs",
@@ -183,7 +183,7 @@ export const generators: Generator[] = [
       rating: "4.9/5",
     },
     buttonText: "Create Next.js Project",
-    href: "/generators/nextjs",
+    href: "/generators/nextjs-generator",
   },
   {
     id: "angular",
@@ -204,7 +204,7 @@ export const generators: Generator[] = [
       rating: "4.7/5",
     },
     buttonText: "Create Angular Project",
-    href: "/generators/angular",
+    href: "/generators/angular-generator",
   },
   // EXAMPLE: Uncomment to add Node.js generator
   // {
