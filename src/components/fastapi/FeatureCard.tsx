@@ -1,6 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import type { FeatureOption } from "@/types/fastapi.types";
 
@@ -73,11 +74,26 @@ export default function FeatureCard({ feature, onToggle }: FeatureCardProps) {
       <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
 
       {/* Description */}
-      <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+      <p className="text-sm text-gray-600 leading-relaxed mb-4">{feature.description}</p>
+
+      {/* Badges */}
+      {feature.badges && feature.badges.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-4">
+          {feature.badges.map((badge, index) => (
+            <Badge
+              key={index}
+              variant="secondary"
+              className="text-xs px-2.5 py-0.5 bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium"
+            >
+              {badge}
+            </Badge>
+          ))}
+        </div>
+      )}
 
       {/* Dependencies */}
       {feature.dependencies && feature.dependencies.length > 0 && (
-        <div className="mt-4 pt-4 border-t border-gray-200">
+        <div className="pt-4 border-t border-gray-200">
           <p className="text-xs text-gray-500">
             Requires: {feature.dependencies.join(", ")}
           </p>

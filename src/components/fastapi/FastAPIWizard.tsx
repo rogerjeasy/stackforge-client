@@ -33,6 +33,7 @@ export default function FastAPIWizard() {
       redocUrl: "/redoc",
       corsEnabled: true,
       corsOrigins: ["http://localhost:3000"],
+      libraries: [],
     },
     features: {
       database: {

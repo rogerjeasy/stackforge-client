@@ -9,6 +9,12 @@ export interface ProjectInfo {
   authorEmail: string;
 }
 
+export interface Library {
+  name: string;
+  version: string;
+  description?: string;
+}
+
 export interface APIConfig {
   host: string;
   port: number;
@@ -17,6 +23,7 @@ export interface APIConfig {
   redocUrl: string;
   corsEnabled: boolean;
   corsOrigins: string[];
+  libraries: Library[];
 }
 
 export interface DatabaseConfig {
@@ -67,4 +74,5 @@ export interface FeatureOption {
   enabled: boolean;
   category: "essential" | "database" | "auth" | "devops" | "advanced";
   dependencies?: string[];
+  badges?: string[];
 }

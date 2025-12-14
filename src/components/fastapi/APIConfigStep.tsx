@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Plus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SelectedLibraries from "./Selectedlibraries";
 import type { APIConfig } from "@/types/fastapi.types";
 
 interface APIConfigStepProps {
@@ -189,6 +190,12 @@ export default function APIConfigStep({ data, onChange, errors }: APIConfigStepP
             </div>
           )}
         </div>
+
+        {/* Libraries Selection */}
+        <SelectedLibraries
+          selected={data.libraries || []}
+          onChange={(libraries) => onChange({ libraries })}
+        />
       </div>
     </div>
   );

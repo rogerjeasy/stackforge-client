@@ -9,4 +9,5 @@ export type {
   WizardStep,
   StepValidation,
   FeatureOption,
+  Library,
 } from "./fastapi.types";

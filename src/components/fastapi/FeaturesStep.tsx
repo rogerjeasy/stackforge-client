@@ -15,26 +15,29 @@ export default function FeaturesStep({ data, onChange }: FeaturesStepProps) {
     {
       id: "docker",
       title: "Docker Support",
-      description: "Production-ready Dockerfile and docker-compose configuration",
+      description: "Multi-stage Dockerfile & docker-compose",
       icon: <Container className="w-6 h-6" />,
       enabled: data.docker,
       category: "essential",
+      badges: ["Docker", "Compose", "Multi-stage"],
     },
     {
       id: "testing",
-      title: "Testing Setup",
-      description: "pytest configuration with coverage and fixtures",
+      title: "Testing Suite",
+      description: "Pytest with coverage and async support",
       icon: <TestTube className="w-6 h-6" />,
       enabled: data.testing,
       category: "essential",
+      badges: ["Pytest", "Coverage", "Async"],
     },
     {
       id: "logging",
-      title: "Logging & Monitoring",
-      description: "Structured logging with different log levels",
+      title: "Advanced Logging",
+      description: "Structured logging with rotation and levels",
       icon: <FileText className="w-6 h-6" />,
       enabled: data.logging,
       category: "essential",
+      badges: ["Loguru", "Structured", "Rotation"],
     },
     
     // Database
@@ -45,6 +48,7 @@ export default function FeaturesStep({ data, onChange }: FeaturesStepProps) {
       icon: <Database className="w-6 h-6" />,
       enabled: data.database.enabled && data.database.type === "postgresql",
       category: "database",
+      badges: ["SQLAlchemy", "Alembic", "PostgreSQL"],
     },
     {
       id: "mongodb",
@@ -53,6 +57,7 @@ export default function FeaturesStep({ data, onChange }: FeaturesStepProps) {
       icon: <Database className="w-6 h-6" />,
       enabled: data.database.enabled && data.database.type === "mongodb",
       category: "database",
+      badges: ["MongoDB", "Motor", "Async"],
     },
     {
       id: "firestore",
@@ -61,16 +66,18 @@ export default function FeaturesStep({ data, onChange }: FeaturesStepProps) {
       icon: <Database className="w-6 h-6" />,
       enabled: data.database.enabled && data.database.type === "firestore",
       category: "database",
+      badges: ["Firestore", "Firebase", "NoSQL"],
     },
     
     // Authentication
     {
       id: "authentication",
       title: "Authentication",
-      description: "JWT authentication with user management",
+      description: "JWT tokens with secure password hashing",
       icon: <Shield className="w-6 h-6" />,
       enabled: data.authentication.enabled,
       category: "auth",
+      badges: ["JWT", "OAuth2", "Bcrypt"],
     },
     
     // DevOps
@@ -81,33 +88,37 @@ export default function FeaturesStep({ data, onChange }: FeaturesStepProps) {
       icon: <Activity className="w-6 h-6" />,
       enabled: data.cicd,
       category: "devops",
+      badges: ["GitHub", "Actions", "Deploy"],
     },
     
     // Advanced
     {
       id: "celery",
-      title: "Celery Task Queue",
-      description: "Background task processing with Celery",
+      title: "Background Tasks",
+      description: "Celery for async task processing",
       icon: <Code className="w-6 h-6" />,
       enabled: data.celery,
       category: "advanced",
       dependencies: ["redis"],
+      badges: ["Celery", "Async", "Queue"],
     },
     {
       id: "redis",
       title: "Redis Caching",
-      description: "Redis for caching and session management",
+      description: "High-performance caching layer with Redis",
       icon: <BarChart className="w-6 h-6" />,
       enabled: data.redis,
       category: "advanced",
+      badges: ["Redis", "Cache", "Performance"],
     },
     {
       id: "monitoring",
       title: "Monitoring",
-      description: "Application monitoring and health checks",
+      description: "Prometheus metrics and health checks",
       icon: <Activity className="w-6 h-6" />,
       enabled: data.monitoring,
       category: "advanced",
+      badges: ["Prometheus", "Metrics", "Health"],
     },
   ];
 
