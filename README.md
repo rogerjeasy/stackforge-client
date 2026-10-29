@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# StackForge Client
 
-## Getting Started
+Next.js frontend for StackForge, a project scaffolding tool meant to generate FastAPI and React starter projects through a step-by-step wizard. The backend lives in [stackforge-server](https://github.com/rogerjeasy/stackforge-server).
 
-First, run the development server:
+## Status
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Early work in progress. Many files in `src/` are empty (0-byte) placeholders created to lay out the intended structure.
+
+Implemented:
+
+- Landing page: hero, features showcase, generator cards, about and contact sections, shared header and footer with a background animation.
+- FastAPI generator wizard at `/fastapi-generator`, with four steps:
+  1. Project info (name, version, Python version, description, author) with basic validation.
+  2. API config (host, port, API prefix, docs/ReDoc URLs, CORS origins) and a library picker with a list of common FastAPI packages plus manual entries.
+  3. Feature toggles (Docker, testing, logging, PostgreSQL / MongoDB / Firestore, authentication, CI/CD, background tasks, Redis, monitoring).
+  4. Review.
+
+Not implemented yet:
+
+- Actual project generation. The "Generate" button does not call a backend; it waits a few seconds and downloads the chosen configuration as `<project-name>-config.json`.
+- React, Next.js and Angular generators (cards are shown on the homepage, but the React wizard files are empty and the other routes do not exist).
+- Authentication, dashboard and project pages, API routes (`src/app/api/*`), services, stores, hooks, schemas and most shared components are empty placeholders.
+- Some header links (`/features`, `/generators`, `/about`, `/contact`) have no matching pages yet.
+
+The figures and contact details shown on the landing and wizard pages are placeholder copy, not real data.
+
+## Tech stack
+
+- Next.js 16 (App Router), React 19, TypeScript
+- Tailwind CSS 4, shadcn/ui components (Radix UI), lucide-react icons, sonner
+- Listed for upcoming work but not yet used: axios, zustand, react-hook-form, zod
+
+## Project structure
+
+```
+src/
+  app/
+    page.tsx                         # Landing page
+    (generators)/fastapi-generator/  # FastAPI wizard page
+    (generators)/react-generator/    # placeholder
+    (auth)/, (dashboard)/, api/      # placeholders
+  components/
+    homepage/                        # Landing page sections
+    fastapi/                         # Wizard steps (FastAPIWizard, ProjectInfoStep, APIConfigStep, FeaturesStep, ReviewStep, ...)
+    common/                          # Header, Footer, BackgroundAnimation
+    ui/                              # shadcn/ui components
+  types/fastapi.types.ts             # Wizard data model
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Prerequisites: Node.js and npm.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Then open http://localhost:3000. No environment variables are needed at this stage.
 
-To learn more about Next.js, take a look at the following resources:
+Other scripts:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build       # production build
+npm run start       # serve the production build
+npm run lint        # ESLint
+npm run type-check  # tsc --noEmit
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Related
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [stackforge-server](https://github.com/rogerjeasy/stackforge-server): FastAPI backend (early skeleton).
